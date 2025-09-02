@@ -1,0 +1,125 @@
+@import "tailwindcss";
+
+/* Couleurs du logo Je cours pour ma forme */
+
+:root {
+  --primary-green: #b3d335; /* Vert anis du logo */
+  --secondary-green: #d6f55a; /* Vert clair accent */
+  --accent-blue: #18406b; /* Bleu foncé du logo */
+  --light-blue: #3b82f6;
+  --neutral-gray: #6b7280;
+  --light-gray: #f3f4f6;
+  --white: #ffffff;
+}
+
+/* Glassmorphism styles */
+.glass {
+  background: rgba(255, 255, 255, 0.15);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
+}
+
+.glass-card {
+  background: rgba(255, 255, 255, 0.12);
+  backdrop-filter: blur(15px);
+  -webkit-backdrop-filter: blur(15px);
+  border: 1px solid rgba(179, 211, 53, 0.3); /* vert anis */
+  border-radius: 20px;
+  box-shadow: 0 8px 32px 0 rgba(179, 211, 53, 0.12);
+}
+
+.glass-input {
+  background: rgba(255, 255, 255, 0.22);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  border: 1px solid rgba(179, 211, 53, 0.4); /* vert anis */
+  border-radius: 12px;
+  transition: all 0.3s ease;
+}
+
+.glass-input:focus {
+  border-color: var(--primary-green);
+  box-shadow: 0 0 0 3px rgba(179, 211, 53, 0.15);
+  outline: none;
+}
+
+.glass-button {
+  background: linear-gradient(135deg, var(--primary-green), var(--secondary-green));
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  border: 1px solid rgba(179, 211, 53, 0.3);
+  border-radius: 12px;
+  color: var(--accent-blue);
+  font-weight: 600;
+  transition: all 0.3s ease;
+  position: relative;
+  overflow: hidden;
+}
+
+.glass-button::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+  transition: left 0.5s;
+}
+
+.glass-button:hover::before {
+  left: 100%;
+}
+
+.glass-button:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 10px 25px rgba(179, 211, 53, 0.22);
+}
+
+.glass-button:active {
+  transform: translateY(0);
+}
+
+/* Background gradient */
+.admin-bg {
+  background: linear-gradient(120deg,
+    var(--accent-blue) 0%,
+    var(--light-blue) 70%,
+    rgba(179, 211, 53, 0.12) 100%
+  );
+  min-height: 100vh;
+}
+
+/* Animation pour le loading */
+@keyframes pulse {
+  0%, 100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.5;
+  }
+}
+
+.pulse {
+  animation: pulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+}
+
+/* Effet de gradient sur le texte */
+.gradient-text {
+  background: linear-gradient(135deg, var(--primary-green), var(--accent-blue));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+/* Style pour les erreurs */
+.error-border {
+  border-color: #ef4444 !important;
+  box-shadow: 0 0 0 3px rgba(239, 68, 68, 0.1) !important;
+}
+
+.error-text {
+  color: #ef4444;
+}

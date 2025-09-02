@@ -1,0 +1,104 @@
+📝 Instructions IA – Projet INGRWF-12 (CMS + API Nuxt 4)
+🎯 Objectif
+
+L’IA doit produire du code pour le CMS + API du projet global.
+Le CMS servira à la gestion admin (CRUD des saisons, semaines, étapes, exercices, coureurs, exports JSON/CSV).
+L’API sera exposée pour alimenter aussi bien le CMS que l’application client (coureurs).
+
+⚠️ L’application client (coureur) n’est pas développée ici.
+On se concentre sur le CMS/Admin + API.
+
+🔧 Stack technique
+
+Framework : Nuxt 4 (SSR activé)
+
+Gestion d’état : Pinia
+
+Requêtes API : useFetch() (jamais de fetch natif)
+
+Base de données & Auth : Supabase (via @supabase/supabase-js)
+
+Style : TailwindCSS (config perso assets/css/main.css)
+
+Thème : glassmorphism moderne et sobre
+
+Couleurs inspirées du logo (dans public/)
+
+Déploiement :
+
+Client → Netlify
+
+Backend/API → Hostinger (CI/CD)
+
+📂 Structure attendue
+app/
+ ├─ assets/css/main.css       # Tailwind + thèmes
+ ├─ stores/                   # Pinia stores
+ ├─ server/api/               # Endpoints Nuxt (REST)
+ ├─ pages/admin/              # Pages CMS admin
+ ├─ components/               # UI components
+ ├─ layouts/                  # Layouts (admin, auth…)
+ ├─ middleware/               # Auth middleware
+
+🔑 Règles importantes
+
+Toujours utiliser useFetch() pour appeler l’API depuis le CMS.
+
+Toujours coder compatible SSR.
+
+Ne jamais effacer un fichier en cas d’erreur → signale l’erreur plutôt que de recommencer.
+
+Pinia est obligatoire pour toute gestion d’état (ex : useAdminStore, useCoureurStore, useFormationStore…)
+
+Les endpoints API sont créés dans server/api/*.
+
+Exemple : server/api/auth/login.post.ts
+
+Tous les endpoints doivent interagir avec Supabase (supabase-js).
+
+Les stores Pinia doivent gérer :
+
+l’état (state)
+
+les sélecteurs (getters)
+
+les appels API (actions avec useFetch).
+
+Respecter le style glassmorphism : bordures floutées, transparence douce, couleurs sobres + accents logo.
+
+📌 Étapes de développement
+1. Authentification
+
+Admin : login/logout avec rôle admin.
+
+Coureur : login/logout avec rôle coureur.
+
+Supabase gère auth.users + user_profiles.
+
+Middleware Nuxt (middleware/auth.global.ts) → protège /admin/*.
+
+2. CRUD Formation
+
+saisons, semaines, etapes, exercices (via Supabase).
+
+Store useFormationStore.
+
+Pages admin CRUD avec formulaires (ex: /admin/saisons, /admin/exercices).
+
+3. Gestion des coureurs
+
+Admin peut lister / modifier / supprimer coureurs (user_profiles).
+
+Page /admin/coureurs.
+
+4. Progression coureur
+
+Table progression.
+
+Admin peut consulter l’avancement d’un coureur.
+
+5. Export
+
+Endpoint /api/export/admin → JSON (progressions + profils).
+
+Endpoint /api/export/coureur → CSV (progression perso).
