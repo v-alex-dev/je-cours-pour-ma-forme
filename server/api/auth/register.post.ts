@@ -17,7 +17,10 @@ export default defineEventHandler(async (event: H3Event) => {
   // Création de l'utilisateur dans Supabase Auth
   const { data: signUpData, error: signUpError } = await supabase.auth.signUp({
     email,
-    password
+    password,
+    options: {
+      data: { nom }
+    }
   });
 
   if (signUpError || !signUpData.user) {
