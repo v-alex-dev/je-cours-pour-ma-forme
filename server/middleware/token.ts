@@ -10,8 +10,6 @@ export default defineEventHandler(async (event) => {
   const publicRoutes = [
     '/api/auth/login',
     '/api/auth/logout',
-    '/api/public',
-    '/api/auth/register',
   ]
   // Si c'est une route publique, passer
   if (publicRoutes.some(route => url.startsWith(route))) {
