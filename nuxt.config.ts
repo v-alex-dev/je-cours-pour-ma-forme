@@ -14,6 +14,9 @@ export default defineNuxtConfig({
       '/api/**': { cors: true }
     }
   },
+  serverMiddleware: [
+    { path: '/api', handler: '~/server/middleware/cors.ts' }
+  ],
   modules: ['@nuxt/icon', '@nuxt/fonts', '@nuxt/image', '@pinia/nuxt'],
   css: ['~/assets/css/main.css'],
   vite: {
