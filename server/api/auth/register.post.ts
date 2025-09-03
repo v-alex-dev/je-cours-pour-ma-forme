@@ -28,7 +28,7 @@ export default defineEventHandler(async (event: H3Event) => {
   }
 
   // Création du profil utilisateur dans user_profiles
-  const { error: profileError } = await supabase.from('user_profiles').insert({
+/*  const { error: profileError } = await supabase.from('user_profiles').insert({
     id: signUpData.user.id,
     nom,
     photo: photo || null
@@ -39,13 +39,12 @@ export default defineEventHandler(async (event: H3Event) => {
       success: false,
       error: profileError.message
     };
-  }
+  }*/
 
   return {
     success: true,
     data: {
       user: signUpData.user,
-      profile: { id: signUpData.user.id, nom, photo: photo || null }
     }
   };
 });

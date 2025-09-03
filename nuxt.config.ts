@@ -9,8 +9,8 @@ export default defineNuxtConfig({
       SUPABASE_ANON_KEY: process.env.SUPABASE_PUBLISHABLE_KEY,
     }
   },
-  nitro:{
-    routeRules:{
+  nitro: {
+    routeRules: {
       '/api/**': { cors: true }
     }
   },
