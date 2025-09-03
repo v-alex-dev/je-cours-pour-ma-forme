@@ -1,3 +1,4 @@
+
 import { createSupabaseClient } from '../../utils/supabase';
 import { H3Event } from 'h3';
 
@@ -12,6 +13,7 @@ export default defineEventHandler(async (event: H3Event) => {
     };
   }
 
+
   const supabase = createSupabaseClient();
 
   // Création de l'utilisateur dans Supabase Auth
@@ -23,7 +25,13 @@ export default defineEventHandler(async (event: H3Event) => {
     }
   });
 
-  if (signUpError || !signUpData.user) {
+  // Log technique côté serveur (console Nuxt)
+  // eslint-disable-next-line no-console
+  console.log('register.post.ts → signUpData:', signUpData);
+  // eslint-disable-next-line no-console
+  console.log('register.post.ts → signUpError:', signUpError);
+
+  if (signUpError || !signUpData?.user) {
     return {
       success: false,
       error: signUpError?.message || 'Erreur lors de la création du compte.'
